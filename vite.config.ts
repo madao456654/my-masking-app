@@ -6,5 +6,5 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   // Base path for GitHub Pages - only applied during build
-  base: process.env.NODE_ENV === 'production' ? '/google_antigravity/log-masker/' : '/',
+  base: '/my-masking-app/',
 })
