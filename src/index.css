@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+/* ============================================
+   SecureMask Design System
+   Theme: Deep Blue & Slate Grey (Security)
+   ============================================ */
+
+@theme {
+  /* Deep Blue palette */
+  --color-primary-50: #eef2ff;
+  --color-primary-100: #d9e2ff;
+  --color-primary-200: #b3c5ff;
+  --color-primary-300: #809fff;
+  --color-primary-400: #4d73ff;
+  --color-primary-500: #2952cc;
+  --color-primary-600: #1e3fa3;
+  --color-primary-700: #162f7a;
+  --color-primary-800: #0f2052;
+  --color-primary-900: #081029;
+
+  /* Slate palette */
+  --color-slate-50: #f8fafc;
+  --color-slate-100: #f1f5f9;
+  --color-slate-200: #e2e8f0;
+  --color-slate-300: #cbd5e1;
+  --color-slate-400: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1e293b;
+  --color-slate-850: #172033;
+  --color-slate-900: #0f172a;
+  --color-slate-950: #020617;
+
+  /* Accent colors */
+  --color-success: #10b981;
+  --color-success-light: #d1fae5;
+  --color-warning: #f59e0b;
+  --color-warning-light: #fef3c7;
+  --color-danger: #ef4444;
+  --color-danger-light: #fee2e2;
+  --color-info: #3b82f6;
+  --color-info-light: #dbeafe;
+
+  /* Fonts */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================
+   Scrollbar (Dark Mode)
+   ============================================ */
+
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--color-slate-800);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--color-slate-600);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-slate-500);
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(41, 82, 204, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(41, 82, 204, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* ============================================
+   Glassmorphism Panel
+   ============================================ */
+
+.glass-panel {
+  background: rgba(30, 41, 59, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* ============================================
+   Textarea Styling
+   ============================================ */
+
+textarea {
+  font-family: var(--font-mono);
+}
+
+textarea:focus {
+  outline: none;
+}
+
+/* ============================================
+   Gradient Backgrounds
+   ============================================ */
+
+.bg-mesh-dark {
+  background-color: var(--color-slate-950);
+  background-image:
+    radial-gradient(at 20% 10%, rgba(41, 82, 204, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 90%, rgba(30, 63, 163, 0.1) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(22, 47, 122, 0.08) 0px, transparent 50%);
+}
+
+.bg-mesh-light {
+  background-color: var(--color-slate-50);
+  background-image:
+    radial-gradient(at 20% 10%, rgba(41, 82, 204, 0.06) 0px, transparent 50%),
+    radial-gradient(at 80% 90%, rgba(30, 63, 163, 0.04) 0px, transparent 50%);
+}
+
+/* ============================================
+   Button Styles
+   ============================================ */
+
+.btn-primary {
+  @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm
+    bg-primary-500 text-white
+    hover:bg-primary-400 active:bg-primary-600
+    transition-all duration-200 ease-out
+    shadow-lg shadow-primary-500/25
+    hover:shadow-xl hover:shadow-primary-500/30
+    hover:-translate-y-0.5
+    disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-lg;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm
+    transition-all duration-200 ease-out
+    hover:-translate-y-0.5
+    disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0;
+}
+
+.dark .btn-secondary {
+  @apply bg-slate-700 text-slate-200 hover:bg-slate-600 border border-slate-600;
+}
+
+.light .btn-secondary {
+  @apply bg-white text-slate-700 hover:bg-slate-100 border border-slate-300;
+}
+
+.btn-danger {
+  @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-medium text-sm
+    transition-all duration-200 ease-out
+    hover:-translate-y-0.5
+    disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0;
+}
+
+.dark .btn-danger {
+  @apply bg-red-900/40 text-red-300 hover:bg-red-900/60 border border-red-800/50;
+}
+
+.light .btn-danger {
+  @apply bg-red-50 text-red-600 hover:bg-red-100 border border-red-200;
+}
+
+/* ============================================
+   Badge Styles
+   ============================================ */
+
+.badge {
+  @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium;
+}
+
+.dark .badge-info {
+  @apply bg-blue-900/40 text-blue-300 border border-blue-800/50;
+}
+.light .badge-info {
+  @apply bg-blue-50 text-blue-700 border border-blue-200;
+}
+
+.dark .badge-success {
+  @apply bg-emerald-900/40 text-emerald-300 border border-emerald-800/50;
+}
+.light .badge-success {
+  @apply bg-emerald-50 text-emerald-700 border border-emerald-200;
+}
+
+.dark .badge-warning {
+  @apply bg-amber-900/40 text-amber-300 border border-amber-800/50;
+}
+.light .badge-warning {
+  @apply bg-amber-50 text-amber-700 border border-amber-200;
+}
