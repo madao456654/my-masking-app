@@ -1,0 +1,12 @@
+# Azure Cost Management - Team Mapping Configuration
+# -----------------------------------------------
+# subscription_id: Azure Subscription ID
+# teams: List of teams with their associated resource groups
+
+subscription_id: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+
+teams:
+  - name: "Team-A"
+    resource_groups: ["rg-app-prod", "rg-app-stg"]
+  - name: "Team-B"
+    resource_groups: ["rg-db-prod"]
